@@ -1,8 +1,8 @@
-package org.opensourcetrader.fixsimulator.exchange.impl;
+package org.opensourcetrader.marketsimulator.exchange.impl;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.opensourcetrader.fixsimulator.exchange.*;
+import org.opensourcetrader.marketsimulator.exchange.*;
 
 import java.math.BigDecimal;
 import java.util.*;

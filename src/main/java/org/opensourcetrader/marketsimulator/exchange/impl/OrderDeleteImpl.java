@@ -1,9 +1,9 @@
-package org.opensourcetrader.fixsimulator.exchange.impl;
+package org.opensourcetrader.marketsimulator.exchange.impl;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import org.opensourcetrader.fixsimulator.exchange.OrderState;
+import org.opensourcetrader.marketsimulator.exchange.OrderState;
 
 @Getter
 @Setter

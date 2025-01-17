@@ -1,4 +1,4 @@
-package org.opensourcetrader.fixsimulator.exchange;
+package org.opensourcetrader.marketsimulator.exchange;
 
 public enum MdEntryType {
     BID,

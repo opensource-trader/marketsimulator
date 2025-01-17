@@ -1,9 +1,8 @@
-package org.opensourcetrader.fixsimulator.fix;
+package org.opensourcetrader.marketsimulator.fix;
 
 import lombok.extern.slf4j.Slf4j;
-import org.opensourcetrader.fixsimulator.exchange.*;
+import org.opensourcetrader.marketsimulator.exchange.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import quickfix.*;
 import quickfix.Message;
 import quickfix.MessageCracker;
@@ -85,7 +84,7 @@ public class ApplicationImpl extends MessageCracker implements Application, Trad
                         new ExecID(trade.getTradeId()),
                         new ExecType(ExecType.TRADE),
                         new OrdStatus(trade.getLeavesQty() > 0 ? OrdStatus.PARTIALLY_FILLED:OrdStatus.FILLED),
-                        new Side(trade.getOrderSide()== org.opensourcetrader.fixsimulator.exchange.Side.BUY? Side.BUY:Side.SELL),
+                        new Side(trade.getOrderSide()== org.opensourcetrader.marketsimulator.exchange.Side.BUY? Side.BUY:Side.SELL),
                         new LeavesQty(trade.getLeavesQty()),
                         new CumQty(trade.getCumQty()));
 
@@ -235,12 +234,12 @@ public class ApplicationImpl extends MessageCracker implements Application, Trad
             }
 
             Side side = order.get(SIDE);
-            org.opensourcetrader.fixsimulator.exchange.Side exSide = null;
+            org.opensourcetrader.marketsimulator.exchange.Side exSide = null;
 
             if (side.getValue() == Side.BUY) {
-                exSide = org.opensourcetrader.fixsimulator.exchange.Side.SELL;
+                exSide = org.opensourcetrader.marketsimulator.exchange.Side.SELL;
             } else if (side.getValue() == Side.SELL) {
-                exSide = org.opensourcetrader.fixsimulator.exchange.Side.BUY;
+                exSide = org.opensourcetrader.marketsimulator.exchange.Side.BUY;
             } else {
                 throw new RejectOrderException("Side not supported: " + side);
             }

@@ -1,4 +1,4 @@
-package org.opensourcetrader.fixsimulator.exchange;
+package org.opensourcetrader.marketsimulator.exchange;
 
 public class OrderModificationException extends Exception {
     public OrderModificationException(String message) {

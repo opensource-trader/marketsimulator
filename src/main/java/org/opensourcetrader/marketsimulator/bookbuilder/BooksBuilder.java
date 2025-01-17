@@ -1,8 +1,8 @@
-package org.opensourcetrader.fixsimulator.bookbuilder;
+package org.opensourcetrader.marketsimulator.bookbuilder;
 
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
-import org.opensourcetrader.fixsimulator.exchange.*;
+import org.opensourcetrader.marketsimulator.exchange.*;
 
 import java.io.FileReader;
 import java.math.BigDecimal;
