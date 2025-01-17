@@ -1,9 +1,9 @@
-package org.opensourcetrader.fixsimulator.exchange.impl;
+package org.opensourcetrader.marketsimulator.exchange.impl;
 
 import lombok.Getter;
-import org.opensourcetrader.fixsimulator.exchange.MDEntry;
-import org.opensourcetrader.fixsimulator.exchange.MdEntryType;
-import org.opensourcetrader.fixsimulator.exchange.MdUpdateActionType;
+import org.opensourcetrader.marketsimulator.exchange.MDEntry;
+import org.opensourcetrader.marketsimulator.exchange.MdEntryType;
+import org.opensourcetrader.marketsimulator.exchange.MdUpdateActionType;
 
 import java.math.BigDecimal;
 

@@ -1,12 +1,11 @@
-package org.opensourcetrader.fixsimulator.exchange.impl;
+package org.opensourcetrader.marketsimulator.exchange.impl;
 
-import org.opensourcetrader.fixsimulator.exchange.Exchange;
-import org.opensourcetrader.fixsimulator.exchange.OrderBook;
+import org.opensourcetrader.marketsimulator.exchange.Exchange;
+import org.opensourcetrader.marketsimulator.exchange.OrderBook;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @Component
 public class ExchangeImpl implements Exchange {

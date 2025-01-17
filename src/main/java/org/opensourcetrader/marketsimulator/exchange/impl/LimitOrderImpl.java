@@ -1,11 +1,9 @@
-package org.opensourcetrader.fixsimulator.exchange.impl;
+package org.opensourcetrader.marketsimulator.exchange.impl;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import org.opensourcetrader.fixsimulator.exchange.Order;
-import org.opensourcetrader.fixsimulator.exchange.Side;
+import org.opensourcetrader.marketsimulator.exchange.Order;
+import org.opensourcetrader.marketsimulator.exchange.Side;
 
 import java.math.BigDecimal;
 import java.util.Objects;
