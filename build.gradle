@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.1'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id "com.google.protobuf" version "0.9.4"
 }
 
 group = 'org.opensourcetrader'
@@ -28,9 +29,41 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	implementation 'com.google.code.gson:gson:2.11.0'
 	implementation 'org.quickfixj:quickfixj-all:2.3.1'
+	implementation 'io.grpc:grpc-services:1.69.0'
+	implementation 'io.grpc:grpc-stub:1.69.0'
+	implementation 'io.grpc:grpc-protobuf:1.69.0'
+	implementation 'io.grpc:grpc-netty-shaded:1.69.0'
+	implementation 'com.google.protobuf:protobuf-java:4.29.3'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+protobuf {
+	protoc {
+		artifact = 'com.google.protobuf:protoc:4.29.3'
+	}
+
+	plugins {
+		grpc {
+			artifact = 'io.grpc:protoc-gen-grpc-java:1.63.0'
+		}
+	}
+
+	generateProtoTasks {
+		all().configureEach { task -> {
+			task.plugins {
+				grpc {} // Generates gRPC service code
+			}
+			task.builtins {
+				named("java") {
+					outputSubDir = "src/main/java"
+				}
+			}
+		}
+
+		}
+	}
 }
 
 tasks.named('test') {
