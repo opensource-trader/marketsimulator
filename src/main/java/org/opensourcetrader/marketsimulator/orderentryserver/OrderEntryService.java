@@ -42,7 +42,7 @@ public class OrderEntryService {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                System.err.println("*** shutting down market data service gRPC server since JVM is shutting down");
+                System.err.println("*** shutting down order entry service gRPC server since JVM is shutting down");
                 try {
                     OrderEntryService.this.stop();
                 } catch (InterruptedException e) {

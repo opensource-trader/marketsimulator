@@ -51,17 +51,10 @@ protobuf {
 	}
 
 	generateProtoTasks {
-		all().configureEach { task -> {
+		all().configureEach { task ->
 			task.plugins {
 				grpc {} // Generates gRPC service code
 			}
-			task.builtins {
-				named("java") {
-					outputSubDir = "src/main/java"
-				}
-			}
-		}
-
 		}
 	}
 }
