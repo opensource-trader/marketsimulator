@@ -1,10 +1,10 @@
-package org.opensourcetrader.fixsimulator;
+package org.opensourcetrader.marketsimulator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FixsimulatorApplicationTests {
+class MarketsimulatorApplicationTests {
 
 	@Test
 	void contextLoads() {
