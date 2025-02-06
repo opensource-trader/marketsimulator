@@ -10,7 +10,9 @@ import org.opensourcetrader.marketsimulator.exchange.Side;
 import org.opensourcetrader.marketsimulator.orderentryserver.api.OrderEntryServiceGrpc;
 import org.opensourcetrader.marketsimulator.orderentryserver.api.Orderentryapi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,19 +21,23 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
+@Service
 @Slf4j
 public class OrderEntryService {
 
     private Exchange exchange;
 
-    public OrderEntryService(@Autowired Exchange exchange) {
+    private int port;
+    public OrderEntryService(@Autowired Exchange exchange,
+                             @Value("${app.order_entry_server_port}") int port) {
         this.exchange = exchange;
+        this.port = port;
     }
 
     private Server server;
 
     public void start() throws IOException {
-        int port = 50061;
+
         server  = ServerBuilder.forPort(port)
                 .addService(new OrderEntryServiceImpl(this.exchange))
                 .addService(ProtoReflectionService.newInstance())

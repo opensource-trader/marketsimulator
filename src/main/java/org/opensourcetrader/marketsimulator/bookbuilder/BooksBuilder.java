@@ -3,6 +3,9 @@ package org.opensourcetrader.marketsimulator.bookbuilder;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.opensourcetrader.marketsimulator.exchange.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
 import java.math.BigDecimal;
@@ -11,6 +14,7 @@ import java.util.*;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+@Service
 @Slf4j
 public class BooksBuilder {
     private Exchange exchange;
@@ -19,9 +23,17 @@ public class BooksBuilder {
 
     private List<BookBuilder> builders = new ArrayList<>();
 
-    public BooksBuilder(Exchange exchange, String depthDataPath, String symbolsToRunStr,
-                       int numExecutorThreads, long updateInterval, double minQty, double variation,
-                       int tickScale, double tradeProbability, int maxDepth, double cancelProbability) throws  Exception {
+    public BooksBuilder(@Autowired Exchange exchange,
+                        @Value("${app.depth_data_path}") String depthDataPath,
+                        @Value("${app.syms_to_run}") String symbolsToRunStr,
+                        @Value("${app.num_of_threads}") int numExecutorThreads,
+                        @Value("${app.update_interval_ms}") long updateInterval,
+                        @Value("${app.min_qty}") double minQty,
+                        @Value("${app.variation}") double variation,
+                        @Value("${app.tick_scale}") int tickScale,
+                        @Value("${app.trade_probability}") double tradeProbability,
+                        @Value("${app.max_depth}") int maxDepth,
+                        @Value("${app.cancel_probability}") double cancelProbability) throws  Exception {
         this.exchange = exchange;
         FileReader fr = new FileReader(depthDataPath);
         Gson gson = new Gson();
