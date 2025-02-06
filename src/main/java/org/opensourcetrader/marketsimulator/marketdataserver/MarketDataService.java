@@ -10,17 +10,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.opensourcetrader.marketsimulator.exchange.Exchange;
 import org.opensourcetrader.marketsimulator.marketdataservice.api.FixSimMarketDataServiceGrpc;
 import org.fixprotocol.components.MarketData;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Service
 @Slf4j
 public class MarketDataService {
     private Exchange exchange;
     private int port;
     private Server server;
 
-    public MarketDataService(Exchange exchange,int port) {
+    public MarketDataService(@Autowired Exchange exchange, @Value("${app.market_data_server_port}") int port) {
         this.exchange = exchange;
         this.port = port;
     }
